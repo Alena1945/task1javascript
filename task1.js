@@ -1,26 +1,26 @@
-while (true) {
-    let numberToGuess = Math.floor(Math.random() * 1000);
-    console.log('Я загадал: ', numberToGuess);
+let numberToGuess = Math.floor(Math.random() * 1000);
+console.log('Я загадал: ', numberToGuess);
 
+while (true) {
     const numberFromUser = prompt('Введите число от 0 до 999:  ');
     console.log('Вы ввели: ', +numberFromUser);
-    
-    if (numberFromUser > numberToGuess) {
-        numberToGuess--;
-        alert('Попробуйте ввести число меньше', numberFromUser);
-    } else {
-        numberToGuess++;
-        alert('Попробуйте ввести число больше', numberFromUser);
-    }
+
     if (numberFromUser === 'q') {
         alert('Вы вышли из игры:(');
-        break
+        break;
     }
-    if (isNaN(numberFromUser)|| (numberFromUser !== 0 && +numberFromUser !== 1)) {
+
+    if (isNaN(numberFromUser)) {
         alert('Вы ввели не число!');
-    } else if (+numberFromUser == numberToGuess) {
+        continue;
+    }
+
+    if (+numberFromUser == numberToGuess) {
         alert('Вы угадали:)');
-    } else {
-        alert('Вы не угадали:(');
+        break;
+    } else if (+numberFromUser > numberToGuess) {
+        alert('Попробуйте ввести число меньше')
+    } else if (+numberFromUser < numberToGuess) {
+        alert('Попробуйте ввести число больше')
     }
 }
